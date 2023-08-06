@@ -22,8 +22,8 @@ def ekstraksi_data():
     hasil['lokasi'] = { 'ls':0.21, 'bt':125.03 }
     hasil['pusat'] = 'Pusat gempa berada di laut 117 km Tenggara Bolaang Mongondo Timur'
     hasil['dirasakan'] = 'Dirasakan (Skala MMI): III - IV Bone Bolango, III - IV Gorontalo, III Manado, III Tomohon, III Tondano, III Minahasa Utara, III Bolaang Mongondow Selatan, III Minahasa Tenggara, III Bolaang Mongondow Timur, III Kotamobagu, III Bitung, III Kab. Gorontalo, II-III Luwuk, II-III Kab. Gorontalo Utara, II-III Banggai Kepulauan, II Ampana'
-
     print(hasil)
+
     return hasil
 
 
@@ -36,7 +36,6 @@ def tamilkan_data(result):
     print (f"lokasi: LS={result ['lokasi']['ls']}, BT={result ['lokasi']['bt']}")
     print (f"pusat {result['pusat']}")
     print (f"dirasakan {result['dirasakan']}")
-
 
 
 if __name__== '__main__':
