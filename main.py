@@ -41,5 +41,4 @@ def tamilkan_data(result):
 if __name__== '__main__':
     print('Aplikasi utama')
     result=ekstraksi_data()
-
     tamilkan_data(result)
