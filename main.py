@@ -31,7 +31,7 @@ def ekstraksi_data():
 def tamilkan_data(result):
     print('Gempa Terakhir Berdasarkan BMKG')
     print(f"tanggal {result['tanggal']}")
-    print (f"waktu {result['wak tu']}")
+    print (f"waktu {result['waktu']}")
     print (f"magnitudo {result['magnitudo']}")
     print (f"lokasi: LS={result ['lokasi']['ls']}, BT={result ['lokasi']['bt']}")
     print (f"pusat {result['pusat']}")
