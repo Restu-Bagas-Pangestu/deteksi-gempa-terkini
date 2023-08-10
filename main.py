@@ -9,7 +9,6 @@ if __name__== '__main__':
     result=gempa_terkini.ekstraksi_data()
     gempa_terkini.tamilkan_data(result)
 
-
 """
     
 """
