@@ -9,6 +9,7 @@ def ekstraksi_data():
     Dirasakan (Skala MMI): III - IV Bone Bolango, III - IV Gorontalo, III Manado, III Tomohon, III Tondano, III Minahasa Utara, III Bolaang Mongondow Selatan, III Minahasa Tenggara, III Bolaang Mongondow Timur, III Kotamobagu, III Bitung, III Kab. Gorontalo, II-III Luwuk, II-III Kab. Gorontalo Utara, II-III Banggai Kepulauan, II Ampana
     :return:
     """
+
     hasil = dict()
     hasil['tanggal'] = '04 Agustus 2023'
     hasil['waktu'] = '18:48:38 WIB'
