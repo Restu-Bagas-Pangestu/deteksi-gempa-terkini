@@ -19,7 +19,7 @@ def ekstraksi_data():
     except Exception:
         return None
     if content.status_code==200:
-        print(content.status_code)
+        print(content.text)
         #soup = BeautifulSoup(content)
         #print(soup.prettify())
 
