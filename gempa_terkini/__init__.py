@@ -19,16 +19,47 @@ def ekstraksi_data():
     except Exception:
         return None
     if content.status_code==200:
-        print(content.text)
-        #soup = BeautifulSoup(content)
-        #print(soup.prettify())
+        soup = BeautifulSoup(content.text, 'html.parser')
+        result = soup.find('span', {'class': 'waktu'})
+        result = result.text.split(', ')
+        waktu = result[0]
+        tanggal = result[1]
+
+        result = soup.find('div', {'class':'col-md-6 col-xs-6 gempabumi-detail no-padding'})
+        result = result.findChildren('li')
+        print(result)
+        i=0
+        magnitudo = None
+        kedalaman = None
+        ls = None
+        bt = None
+        pusat = None
+        dirasakan = None
+        for res in result:
+            print(i, res)
+            if i == 1:
+                magnitudo = res.text
+            elif i==2:
+                kedalaman = res.text
+            elif i==3:
+                koordinat = res.text.split(' - ')
+                ls = koordinat[0]
+                bt = koordinat[1]
+            elif i==4:
+                lokasi = res.text
+            elif i==5:
+                dirasakan = res.text
+
+            i=i+1
+
 
         hasil = dict()
-        hasil['tanggal'] = '04 Agustus 2023'
-        hasil['waktu'] = '18:48:38 WIB'
-        hasil['magnitudo'] = 6.0
-        hasil['lokasi'] = { 'ls':0.21, 'bt':125.03 }
-        hasil['pusat'] = 'Pusat gempa berada di laut 117 km Tenggara Bolaang Mongondo Timur'
+        hasil['tanggal'] = tanggal #'04 Agustus 2023'
+        hasil['waktu'] = waktu #'18:48:38 WIB'
+        hasil['magnitudo'] = magnitudo #6.0
+        hasil['kedalaman'] = kedalaman
+        hasil['koordinat'] = { 'ls':ls, 'bt':bt }
+        hasil['lokasi'] = lokasi
         hasil['dirasakan'] = 'Dirasakan (Skala MMI): III - IV Bone Bolango, III - IV Gorontalo, III Manado, III Tomohon, III Tondano, III Minahasa Utara, III Bolaang Mongondow Selatan, III Minahasa Tenggara, III Bolaang Mongondow Timur, III Kotamobagu, III Bitung, III Kab. Gorontalo, II-III Luwuk, II-III Kab. Gorontalo Utara, II-III Banggai Kepulauan, II Ampana'
         return hasil
     else:
@@ -42,8 +73,9 @@ def tamilkan_data(result):
     print(f"tanggal {result['tanggal']}")
     print (f"waktu {result['waktu']}")
     print (f"magnitudo {result['magnitudo']}")
-    print (f"lokasi: LS={result ['lokasi']['ls']}, BT={result ['lokasi']['bt']}")
-    print (f"pusat {result['pusat']}")
+    print (f"kedalaman {result['kedalaman']}")
+    print (f"koordinat: LS={result ['koordinat']['ls']}, BT={result ['koordinat']['bt']}")
+    print(f"lokasi {result['lokasi']}")
     print (f"dirasakan {result['dirasakan']}")
 
 #if __name__ == '__main__':
