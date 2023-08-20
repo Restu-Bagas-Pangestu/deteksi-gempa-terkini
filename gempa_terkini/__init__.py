@@ -27,7 +27,7 @@ def ekstraksi_data():
 
         result = soup.find('div', {'class':'col-md-6 col-xs-6 gempabumi-detail no-padding'})
         result = result.findChildren('li')
-        print(result)
+
         i=0
         magnitudo = None
         kedalaman = None
@@ -35,8 +35,8 @@ def ekstraksi_data():
         bt = None
         pusat = None
         dirasakan = None
+
         for res in result:
-            print(i, res)
             if i == 1:
                 magnitudo = res.text
             elif i==2:
@@ -49,18 +49,16 @@ def ekstraksi_data():
                 lokasi = res.text
             elif i==5:
                 dirasakan = res.text
-
             i=i+1
 
-
         hasil = dict()
-        hasil['tanggal'] = tanggal #'04 Agustus 2023'
-        hasil['waktu'] = waktu #'18:48:38 WIB'
-        hasil['magnitudo'] = magnitudo #6.0
+        hasil['tanggal'] = tanggal
+        hasil['waktu'] = waktu
+        hasil['magnitudo'] = magnitudo
         hasil['kedalaman'] = kedalaman
         hasil['koordinat'] = { 'ls':ls, 'bt':bt }
         hasil['lokasi'] = lokasi
-        hasil['dirasakan'] = 'Dirasakan (Skala MMI): III - IV Bone Bolango, III - IV Gorontalo, III Manado, III Tomohon, III Tondano, III Minahasa Utara, III Bolaang Mongondow Selatan, III Minahasa Tenggara, III Bolaang Mongondow Timur, III Kotamobagu, III Bitung, III Kab. Gorontalo, II-III Luwuk, II-III Kab. Gorontalo Utara, II-III Banggai Kepulauan, II Ampana'
+        hasil['dirasakan'] = dirasakan
         return hasil
     else:
         return None
@@ -69,14 +67,15 @@ def tamilkan_data(result):
     if result is None:
         print ("Tidak bisa menemukan gempa terkini")
         return
+
     print('Gempa Terakhir Berdasarkan BMKG')
-    print(f"tanggal {result['tanggal']}")
-    print (f"waktu {result['waktu']}")
-    print (f"magnitudo {result['magnitudo']}")
-    print (f"kedalaman {result['kedalaman']}")
-    print (f"koordinat: LS={result ['koordinat']['ls']}, BT={result ['koordinat']['bt']}")
-    print(f"lokasi {result['lokasi']}")
-    print (f"dirasakan {result['dirasakan']}")
+    print(f"Tanggal {result['tanggal']}")
+    print (f"Waktu {result['waktu']}")
+    print (f"Magnitudo {result['magnitudo']}")
+    print (f"Kedalaman {result['kedalaman']}")
+    print (f"Koordinat: LS={result ['koordinat']['ls']}, BT={result ['koordinat']['bt']}")
+    print(f"Lokasi {result['lokasi']}")
+    print (f"Dirasakan {result['dirasakan']}")
 
 #if __name__ == '__main__':
 #    print('ini adalah package gempaterkini')
