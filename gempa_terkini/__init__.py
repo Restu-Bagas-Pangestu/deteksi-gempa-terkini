@@ -20,6 +20,7 @@ def ekstraksi_data():
         return None
     if content.status_code==200:
         soup = BeautifulSoup(content.text, 'html.parser')
+
         result = soup.find('span', {'class': 'waktu'})
         result = result.text.split(', ')
         waktu = result[0]
